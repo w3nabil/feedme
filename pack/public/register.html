@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_title}} | FeedMe</title>
+    <!---
+    <script src="{{url_for('static', filename='js/nopaste.js')}}"></script> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='img/thoughts-icon.png')}}" type="image/png">
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=nojs">
+    </noscript>
+</head>
+<body>
+    <form action="" method="POST">
+        <h1 style="text-align: center;">Register</h1>
+        <p>{{message}}</p>
+        <div class="login-form">
+            <label for="email" >Email</label>
+            <input type="email" name="email" id="email" required placeholder="example@email.com" autocomplete="off">
+            <p>We only accept gmail.com mail service provider for now!</p>
+            <label for="username" >Username</label>
+            <input type="text" name="username" id="username" required placeholder="nabil" autocomplete="off">
+            <p>Userame should be alphanumeric, Non-Captipal , No special Character, 5-32 characters</p>
+            <label for="password" >Password</label>
+            <input type="password" name="password" id="password" required placeholder="@Example123" autocomplete="off">
+            <p>You password must contain at lest 1 special character, 1 capital letter and 1 digit. Password must be within 10 to 20 characters.</p>
+            <label for="password2">Re enter Password</label>
+            <input type="password" name="password2" id="password2" required placeholder="@Example123" autocomplete="off">
+            <p>Re enter your password</p>
+            <label for="2fa">Whom do you love most?</label>
+            <input type="text" name="2fa" id="2fa" required placeholder="John Cena" autocomplete="off">
+            <button type="submit">Request Access</button>
+        </div>
+        <p>Already have an account? <a href="/login">Login now!</a></p>
+    </form>
+</body>
+</html>
