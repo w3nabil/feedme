@@ -27,9 +27,9 @@
                 </tr>
               {% for i in form | reverse %}
                 <tr>
-                    <td style="text-align: center;"><a href="https://a446-103-184-95-246.ngrok-free.app/form/{{i.shorturl}}">https://a446-103-184-95-246.ngrok-free.app/form/{{i.shorturl}}</a></td>
+                    <td style="text-align: center;"><a href="http://localhost:5000/form/{{i.shorturl}}">http://localhost:5000/form/{{i.shorturl}}</a></td>
                     <td style="text-align: center;">{{i.date}}</td>
-                    <td style="text-align: center;"><a href="https://a446-103-184-95-246.ngrok-free.app/form/{{i.shorturl}}/answers">https://a446-103-184-95-246.ngrok-free.app/form/{{i.shorturl}}/answers</a></td>
+                    <td style="text-align: center;"><a href="http://localhost:5000/form/{{i.shorturl}}/answers">http://localhost:5000/form/{{i.shorturl}}/answers</a></td>
                 </tr>
                {% endfor %}
             </table>
