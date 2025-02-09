@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{page_title}} | FeedMe</title>
-    <!---
-    <script src="{{url_for('static', filename='js/nopaste.js')}}"></script> -->
+    <script src="{{url_for('static', filename='js/nopaste.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
     <link rel="icon" href="{{url_for('static', filename='img/thoughts-icon.png')}}" type="image/png">
     <noscript>
@@ -31,7 +30,7 @@
             <p>Re enter your password</p>
             <label for="2fa">Whom do you love most?</label>
             <input type="text" name="2fa" id="2fa" required placeholder="John Cena" autocomplete="off">
-            <button type="submit">Request Access</button>
+            <button type="submit">Register</button>
         </div>
         <p>Already have an account? <a href="/login">Login now!</a></p>
     </form>

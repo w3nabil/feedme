@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_required, current_user
-from .db_custom import User
 from . import db 
 LoginManager = LoginManager()
 
@@ -11,7 +10,11 @@ views = Blueprint('views', __name__, template_folder='public')
 def home():
     from .db_custom import FormQue
     form = FormQue.query.filter_by(user=current_user.id).all()
-    return render_template('home.html', user=current_user, form=form) 
+
+    useragent = request.headers.get('User-Agent')
+    ipaddr = request.headers.get('X-Forwarded-For', request.remote_addr)
+
+    return render_template('home.html', user=current_user, form=form, useragent=useragent, ipaddress=ipaddr) 
 
 @views.route('/nojs')
 def nojs():
@@ -21,47 +24,71 @@ def nojs():
 @views.route('/form/<shorturl>', methods=['GET', 'POST'])
 def formanswer(shorturl):
     from .db_custom import FormQue
-    form = FormQue.query.filter_by(shorturl=shorturl).first() or None
+    form = FormQue.query.filter_by(shorturl=shorturl).first()
 
-    if form is None :
+    if form is None:
         return redirect(url_for('views.error'))
 
+    questions = {}
+    for i in range(1, 11): 
+        question = getattr(form, f'question{i}', None)
+        if question:
+            questions[f'question{i}'] = question
+
     if request.method == 'POST':
-        shorturl = shorturl
         user = form.user
         name = request.form.get('name')
         email = request.form.get('email')
-        answer1 = request.form.get('answer1' or None)
-        answer2 = request.form.get('answer2' or None)
-        answer3 = request.form.get('answer3' or None)
-        answer4 = request.form.get('answer4' or None)
-        answer5 = request.form.get('answer5' or None)
-        answer6 = request.form.get('answer6' or None)
-        answer7 = request.form.get('answer7' or None)
-        answer8 = request.form.get('answer8' or None)
-        answer9 = request.form.get('answer9' or None)
-        answer10 = request.form.get('answer10' or None)
+        answers = {}
+
+        for i in range(1, 11):
+            answer = request.form.get(f'answer{i}')
+            if answer:
+                answers[f'answer{i}'] = answer
+
         from .db_custom import FormAns
-        new_answer = FormAns(user=user, name=name, email=email, answer1=answer1, answer2=answer2, answer3=answer3, answer4=answer4, answer5=answer5, answer6=answer6, answer7=answer7, answer8=answer8, answer9=answer9, answer10=answer10, shorturl=shorturl)
+        new_answer = FormAns(user=user, name=name, email=email, shorturl=shorturl, **answers)
         db.session.add(new_answer)
         db.session.commit()
         return redirect(url_for('views.home'))
-    return render_template('answerform.html', form=form)
+
+    return render_template('answerform.html', form=form, questions=questions)
 
 @views.route('/form/<shorturl>/answers')
 @login_required
 def formanswers(shorturl):
     user = current_user.id
     from .db_custom import FormAns, FormQue
-    answer = FormAns.query.filter_by(shorturl=shorturl).all()
-    question = FormQue.query.filter_by(shorturl=shorturl).first() 
+    answers = FormAns.query.filter_by(shorturl=shorturl).all()
+    question = FormQue.query.filter_by(shorturl=shorturl).first()
+    
+    if not answers:
+        return render_template('viewans.html', x=question, message="No answers yet")
 
-    for i in answer:
-        if int(i.user) == int(user):
-            print("no error")
-            return render_template('viewans.html', i=answer, x=question)
-        else:
-            return redirect(url_for('views.error'))
+    user_has_answered = any(int(answer.user) == int(user) for answer in answers)
+    if not user_has_answered:
+        return redirect(url_for('views.error'))
+
+    questions = [getattr(question, f'question{i}', None) for i in range(1, 11)]
+
+    processed_answers = []
+    for ans in answers:
+        processed_answers.append({
+            'name': ans.name,
+            'email': ans.email,
+            'date': ans.date,
+            **{f'answer{i}': getattr(ans, f'answer{i}', None) for i in range(1, 11)}
+        })
+
+    return render_template(
+        'viewans.html',
+        x=question,
+        questions=questions,
+        answers=processed_answers,
+        message=None
+    )
+
+
 
 @views.route('/makeform', methods=['GET', 'POST'])
 @login_required

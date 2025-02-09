@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     cover_pic = db.Column(db.String(100), default='img/default-cover.jpg')
     hometown = db.Column(db.String(50))
     bio = db.Column(db.String(300)) 
-    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%H:%M, %dth %B, %Y'))
 
 class FormQue(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -31,8 +31,7 @@ class FormQue(db.Model):
     question9 = db.Column(db.String(300))
     question10 = db.Column(db.String(300))
     user = db.Column(db.String(32))
-    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-
+    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%H:%M, %dth %B, %Y'))
 
 class FormAns(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,5 +48,5 @@ class FormAns(db.Model):
     answer8 = db.Column(db.String(300))
     answer9 = db.Column(db.String(300))
     answer10 = db.Column(db.String(300))
-    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    date = db.Column(db.String(20), default=lambda: datetime.now().strftime('%H:%M, %dth %B, %Y'))
     shorturl = db.Column(db.String(8))

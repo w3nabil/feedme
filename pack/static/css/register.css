@@ -1,103 +1,120 @@
-/*For Path :  /signup */
-
-body {
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #000;
+/* Reset some default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body styling */
+body {
+    background-color: #121212;
+    /* Dark background */
+    color: #e0e0e0;
+    /* Light text for contrast */
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
+    flex-direction: column;
 }
 
+/* Form container styling */
 form {
-    color: #006400;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #006400;
-    border-radius: 5px; 
+    background-color: #1f1f1f;
+    /* Dark form background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
-form p {
-    font-size: 14px;
-    margin: 0;
+/* Title styling */
+h1 {
+    color: #ffffff;
+    font-size: 24px;
     margin-bottom: 20px;
-    color: #4c5b64;
 }
 
-form p a {
-    color: #006400;
-    text-decoration: none;
+/* Message styling */
+p {
+    color: #b0b0b0;
+    /* Slightly lighter color for message text */
     font-size: 14px;
-    margin-left: 5px;
-}
-
-input[type="text"], input[type="password"], input[type="email"] {
-    width: 95%;
-    padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #006400;
-    border-radius: 3px;
-    background-color: #2d2d2d;
-    color: #fff;
 }
 
-button[type="submit"] {
-    width: 98%;
-    padding: 10px;
+/* Input field styling */
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #2c2c2c;
+    /* Dark input field background */
+    color: #e0e0e0;
+    /* Light text inside input */
+    font-size: 16px;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #aaa;
+}
+
+/* Button styling */
+button {
+    background-color: #6200ea;
+    /* Purple background */
+    color: white;
+    padding: 12px;
+    width: 100%;
     border: none;
-    border-radius: 3px;
-    background-color: #006400;
-    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-}
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-.login-form {
-    margin-bottom: 20px;
-}
-.login-form label {
-    font-size: 32px;
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    transition: background-color 0.3s;
 }
 
-.login-form p {
-    font-size: 14px;
-    margin: 0;
-    margin-bottom: 20px;
-    color: #4c5b64;
+button:hover {
+    background-color: #3700b3;
+    /* Darker purple on hover */
 }
 
-.login-form a {
-    color: #006400;
+/* Small text styling for instructions */
+p+p {
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Link styling */
+a {
+    color: #bb86fc;
+    /* Light purple for links */
     text-decoration: none;
-    font-size: 14px;
-    margin-left: 5px;
 }
 
-.login-form a:hover {
-    color: #0056b3;
+a:hover {
+    text-decoration: underline;
 }
 
-
-/*For mobile */
-
-@media (max-width: 400px) {
-    body {
-        height: 100%;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        padding-top: 20px;
-    }
+/* Responsive design */
+@media (max-width: 480px) {
     form {
-        width: 80%;
+        padding: 20px;
+        width: 90%;
     }
-    .login-form label {
-        font-size: 16px;
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
     }
 }

@@ -1,191 +1,148 @@
-/* path: /  */
-
-body {
-    border: 0;
+* {
     margin: 0;
     padding: 0;
-    background-color: #333;
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-weight: 500;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
 
 #navbar {
-    background-color: #333;
-    color: white;
-    padding-bottom: 5px;
-    height: 40px;
-    padding-right: 5px;
-    border-bottom: 1px solid white;
-    position: fixed;
+    background-color: #1f1f1f;
+    padding: 15px;
     width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-#navbar ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 2px;
-    padding-right: 20%;
-    padding-left: 20%;
+.homepage {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
 }
 
-
-#navbar ul li {
-    padding: 5px;
+.box {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 
-#navbar ul li a {
+.createform-btn {
+    background-color: #6200ea;
     color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.createform-btn:hover {
+    background-color: #3700b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: #333;
+    color: #ffffff;
+}
+
+td a {
+    color: #bb86fc;
     text-decoration: none;
 }
 
-
-.homepage {
-    padding-top: 60px;
-    padding: 20px;
-    color: white;
+td a:hover {
+    text-decoration: underline;
 }
 
-
-.postform {
-    background-color: #444;
-    border-radius: 5px;
-}
-
-
-.postform form {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.postform form button {
-    padding: 10px;
-    border: 0;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-}
-
-
-.postform form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 0;
-    background-color: #333;
-    color: white;
-    resize: none;
-    height: 100px;
-}
-
-
-.postbox {
-    padding: 20px;
-    background-color: #333;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-
-.postbox h3 {
-    padding: 0;
-    margin: 0;
-}
-
-
-.senttime {
-    color: #aaa;
-    font-size: 12px;
-    padding: 0;
-    margin-top: 2px;
-}
-
-
-.postcontent {
-    padding: 0;
-    margin: 10px;
+p {
     font-size: 16px;
+    color: #e0e0e0;
+    text-align: center;
 }
 
-
-.homepage2 {
-    display: flex;
-    
+a {
+    color: #bb86fc;
+    text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
 
-.userinfo {
+.credit {
+    background-color: #2c2c2c;
     padding: 20px;
-    background-color: #444;
-    border-radius: 5px;
-    width: 30%;
-    position: fixed;
-    margin-top: 60px;
-    height: 100vh;
+    border-radius: 8px;
 }
 
-
-.allpost {
-    padding: 20px;
-    background-color: #444;
-    border-radius: 5px;
-    width: 100%;
-    margin-top: 60px;
+.credit p {
+    font-size: 14px;
+    color: #b0b0b0;
 }
 
-
-.agree-btn {
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid white;
-}
-
-
-.disagree-btn {
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    border: 1px solid white;
-}
-
-
-.opinion-btn {
-    display: inline-block;
-    margin: 5px;
-    display: inline-flex;
-}
-
-.createform-btn-class {
-    margin-bottom: 5px;
-    margin-top: 5px; 
-}
-.createform-btn {
-    border-radius: 5px;
-    width: 100%;
-    padding: 10px;
-}
-
-/* Mobile */
-
-@media (max-width: 400px) {
-    body {
-        height: 100%;
+@media (max-width: 768px) {
+    .homepage {
+        padding: 15px;
     }
 
-    .userinfo {
-        display: none;
+    .box {
+        padding: 15px;
     }
 
-    .allpost {
-        width: 100%;
-        margin-left: 0;
+    h3 {
+        font-size: 18px;
+    }
+
+    .createform-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #navbar {
+        font-size: 20px;
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .createform-btn {
+        font-size: 12px;
     }
 }

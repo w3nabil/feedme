@@ -1,48 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>My Form | FeedMe</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/form.css')}}">
+    <script src="{{url_for('static', filename='js/form.js')}}"></script>
 </head>
+
 <body>
     <div class="container">
         <h1>Form Creation Center</h1>
         <form method="post">
             <div class="form-group">
-                <label for="name">Form Title</label>
-                <input type="text" id="title" name="title" required>
+                <label for="title">Form Title</label>
+                <input type="text" id="title" name="title" required placeholder="Enter the form title">
             </div>
             <div class="form-group">
-                <label for="name">Form Description</label>
-                <input type="text" id="description" name="description" required>
+                <label for="description">Form Description</label>
+                <input type="text" id="description" name="description" required
+                    placeholder="Enter the form description">
             </div>
             <div class="form-group">
-                <label for="name">Question 1</label>
-                <input type="text" id="question1" name="question1" required>
+                <label for="question1">Question 1</label>
+                <input type="text" id="question1" name="question1" required placeholder="Enter question 1">
             </div>
-            <button style="width: 30%;" onclick="addanother()">+ Add Another Question</button>
-
-            <button type="submit" style="width: 100%; margin-top: 20px; margin-bottom: 10px;">MAKE FORM</button>
+            <button type="button" class="add-question-btn" onclick="addanother()">+ Add Another Question</button>
+            <button type="submit" class="submit-btn">MAKE FORM</button>
         </form>
     </div>
-    <script>
-        function addanother() {
-            var form = document.querySelector('form');
-            var questionNumber = form.querySelectorAll('input[type="text"]').length - 2 + 1 ;
-            var newQuestion = document.createElement('div');
-            newQuestion.classList.add('form-group');
-            newQuestion.innerHTML = `
-                <label for="name">Question ${questionNumber}</label>
-                <input type="text" id="question${questionNumber}" name="question${questionNumber}" required>
-            `;
-            form.insertBefore(newQuestion, form.querySelector('button'));
-
-            if (questionNumber == 10) {
-                document.querySelector('button').style.display = 'none';
-            }
-        }
-    </script>
 </body>
+
 </html>

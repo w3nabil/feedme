@@ -5,42 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | FeedMe </title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <script src="{{url_for('static', filename='js/home.js')}}"></script>
 </head>
 <body>
    <div id="navbar">
-    <p style="text-align: center; width: 100%;">FeedMe</p>
+    <p>FeedMe</p>
    </div>
    <div class="homepage">
-    <div class="homepage2">
-        <div class="allpost">
-            <h2 style="text-align: center;">Welcome, {{user.name or "Anonymous User"}}.</h2>
-            
-            <div class="createform-btn-class">
-                <button class="createform-btn" type="submit" onclick="refformpage()">Create a form!</button>
+        <div class="homeinfo">
+            <div class="box">
+                <h3>Welcome, {{user.name or "Anonymous User"}}.</h3>
+                <div class="createform-btn-class">
+                     <button class="createform-btn" type="submit" onclick="refformpage()">Create a form!</button>
+                </div>
             </div>
-
-            <table width="100%" cellspacing="0" border=1>
-                <tr>
-                    <th>Form Link</th>
-                    <th>Created At</th>
-                    <th>Answers</th>
-                </tr>
-              {% for i in form | reverse %}
-                <tr>
-                    <td style="text-align: center;"><a href="http://localhost:5000/form/{{i.shorturl}}">http://localhost:5000/form/{{i.shorturl}}</a></td>
-                    <td style="text-align: center;">{{i.date}}</td>
-                    <td style="text-align: center;"><a href="http://localhost:5000/form/{{i.shorturl}}/answers">http://localhost:5000/form/{{i.shorturl}}/answers</a></td>
-                </tr>
-               {% endfor %}
-            </table>
-
         </div>
-    </div>
+        <div class="homeinfo homeinfoloop">
+            <div class="box">
+                <h3>Your Forms</h3>
+                <table border=1>
+                    <tr>
+                        <td class="th">Form Link</td>
+                        <td class="th">Created At</td>
+                        <td class="th"></td>
+                    </tr>
+                {% for i in form | reverse %}
+                    <tr>
+                        <td><a href="http://localhost:5000/form/{{i.shorturl}}">{{i.shorturl}}</a></td>
+                        <td>{{i.date}}</td>
+                        <td><a href="http://localhost:5000/form/{{i.shorturl}}/answers">See Response</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="homeinfo homeinfoloop">
+            <div class="box">
+                <h3>Development Version Data</h3>
+                <p><span>User Agent</span> <br><br>{{useragent}} <br><br> <span>IP Address</span> <br><br> {{ipaddress}}<br></p>
+            </div>
+        </div>
+        <div class="homeinfo homeinfoloop">
+            <div class="box">
+                <div class="credit">
+                    <p>
+                        &copy; 2024 FeedMe. All rights reserved.
+                        <br>
+                        Caution: This is a development version of FeedMe. Please do not use it for production. Also Avoid sharing your real information while testing the app.
+                        <br>
+                        We do not store neither sell any sensitve data (Including GEO location, Mobile Number, Address) of yours to any third party. We store your NAME & Email to avoid spam.   
+                    </p>
+                    <p>
+                        <a href="https://github.com/w3nabil">
+                            <img src="{{url_for('static', filename='img/sponsor.png')}}" alt="" width="300px" height="auto">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-    <script>
-        function refformpage() {
-            location.href = '/makeform';
-        }
-    </script>
+    </div>
 </body>
 </html>

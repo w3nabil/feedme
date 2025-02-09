@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | FeedMe</title>
-    <script src="{{url_for('static', filename='js/nopaste.js')}}"></script> 
+    <link rel="icon" href="{{url_for('static', filename='img/sponsor.png')}}" type="image/png">
     <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
-    <link rel="icon" href="{{url_for('static', filename='img/thoughts-icon.png')}}" type="image/png">
+    <script src="{{url_for('static', filename='js/nopaste.js')}}"></script>
+    <script defer src="{{url_for('static', filename='js/login.js')}}"></script>
     <noscript>
         <meta http-equiv="refresh" content="0;url=nojs">
     </noscript>
 </head>
+
 <body>
-    <form action="" method="post" >
-        <h1 style="text-align: center;">Login</h1>
-        <p>{{message}}</p>
-        <div class="login-form">
-            <label for="username" >Username</label>
-            <input type="text" name="username" id="username" required placeholder="example: nabil" autocomplete="off">
-            <p>Type your username , not email address or phone number</p>
-            <label for="password" >Password</label>
-            <input type="password" name="password" id="password" required placeholder="example: @password1" autocomplete="off">
-            <label for="2fa">Whom do you like most?</label>
-            <input type="text" name="2fa" id="2fa" required placeholder="example: Your Mom" autocomplete="off">
-            <button type="submit">Access</button>
-        </div>
-        <p>Not a member of FeedMe? <a href="/signup">Register now!</a></p>
-    </form>
+
+    <div class="background">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <div class="login-container">
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">Log in to continue</p>
+
+        <form action="" method="post">
+            <p class="error-message">{{ message }}</p>
+
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" required placeholder="example: nabil"
+                    autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required placeholder="example: @password1"
+                    autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label for="2fa">Whom do you like most?</label>
+                <input type="text" name="2fa" id="2fa" required placeholder="example: Miku Nakano" autocomplete="off">
+            </div>
+
+            <button type="submit" class="btn">Access</button>
+        </form>
+
+        <p class="register-text">Not a member of FeedMe? <a href="/signup">Register now!</a></p>
+    </div>
+
 </body>
 </html>

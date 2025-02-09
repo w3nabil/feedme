@@ -1,91 +1,129 @@
-/*For Path :  login.html */
-
-body {
-    font-family: BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #000;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #ffffff;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     height: 100vh;
-
+    overflow: hidden;
 }
 
-form {
-    color: #006400;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #006400;
-    border-radius: 5px;
-}
-
-input[type="text"], input[type="password"] {
-    width: 95%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #006400;
-    border-radius: 3px;
-    background-color: #2d2d2d;
-    color: #fff;
-}
-
-button[type="submit"] {
+.background {
+    position: fixed;
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #006400;
-    color: #fff;
-    cursor: pointer;
+    height: 100%;
+    background: url("../img/nebula.jpg") no-repeat center center/cover;
 }
-input[type="submit"]:hover {
-    background-color: #0056b3;
+
+/* 
+.stars {
+    width: 100%;
+    height: 100%;
+    background: url("../img/star.jpg") no-repeat;
+    position: absolute;
+    animation: move-stars 50s linear infinite;
 }
-.login-form {
-    margin-bottom: 20px;
+*/
+
+@keyframes move-stars {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -10000px 5000px;
+    }
 }
-.login-form label {
-    font-size: 32px;
-    display: block;
-    font-weight: bold;
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    width: 350px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    font-size: 24px;
     margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
-.login-form p {
+.subtitle {
     font-size: 14px;
-    margin: 0;
-    margin-bottom: 20px;
-    color: #4c5b64;
+    color: #bbb;
 }
 
-form p {
+.input-group {
+    margin: 15px 0;
+    text-align: left;
+}
+
+label {
     font-size: 14px;
-    margin: 0;
-    margin-bottom: 20px;
-    color: #4c5b64;
-
+    color: #ddd;
 }
 
-form p a {
-    color: #006400;
+input {
+    width: 100%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff6600;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff4500;
+}
+
+.register-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #ff6600;
     text-decoration: none;
     font-weight: bold;
 }
 
-form p a:hover {
-    color: #0056b3;
-}
-
-/*For mobile */
-
-@media (max-width: 400px) {
-    form {
-        width: 80%;
-    }
-    .login-form label {
-        font-size: 16px;
-    }
+.register-text a:hover {
+    text-decoration: underline;
 }
